@@ -1,5 +1,5 @@
-interface Navbar{
-    logo: String,
-    options: [],
+interface NavbarInterface{
+    brand: String,
+    options: String[],
 }
-export default Navbar
+export default NavbarInterface

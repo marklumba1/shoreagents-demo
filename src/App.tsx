@@ -1,6 +1,11 @@
 import Home from "./pages/Home";
+import Navbar from "./components/Navbar";
 const App = () => {
-    return ( <div><Home /></div> );
+    return ( <div>
+        <Navbar options={["Home", "Login"]} brand="ShoreAgents"/>
+        <Home />
+        
+        </div> );
 }
  
 export default App;
