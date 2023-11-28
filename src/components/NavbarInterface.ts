@@ -1,5 +1,8 @@
 interface NavbarInterface{
     brand: String,
-    options: String[],
+    options: {
+        title: String,
+        subTitles?: String[]
+    }[],
 }
 export default NavbarInterface

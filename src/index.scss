@@ -1,0 +1,30 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+@layer components {
+  .btn {
+    @apply border rounded p-3;
+  }
+  .btn-primary {
+    @apply bg-green-700 text-white cursor-pointer;
+    &:hover {
+      @apply bg-green-600 text-white;
+      transition: 500ms;
+    }
+  }
+  .fade-in {
+    opacity: 0;
+    animation: fade-in 300ms linear forwards;
+  }
+}
+
+@keyframes fade-in {
+  100% {
+    opacity: 1;
+  }
+}
