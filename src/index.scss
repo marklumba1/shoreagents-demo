@@ -11,9 +11,9 @@
     @apply border rounded p-3;
   }
   .btn-primary {
-    @apply bg-green-700 text-white cursor-pointer;
+    @apply bg-lime-600 text-white cursor-pointer;
     &:hover {
-      @apply bg-green-600 text-white;
+      @apply bg-lime-500 text-white;
       transition: 500ms;
     }
   }
