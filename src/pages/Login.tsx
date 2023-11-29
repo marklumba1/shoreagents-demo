@@ -1,5 +1,5 @@
-import { Link } from "react-router-dom";
-import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { useState, useEffect } from "react";
 import useAxios from "../hooks/useAxios";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
 
@@ -10,9 +10,13 @@ const Login = () => {
     method: "GET",
   });
 
-  const handleLogin = () => {
-    fetchData();
-  };
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (data?.id) {
+      navigate(`/profile/${data?.id}`);
+    }
+  }, [data]);
 
   return (
     <div className="relative h-[100vh] w-[100vw] border border-red-500 flex justify-center items-center">
@@ -39,7 +43,7 @@ const Login = () => {
 
         <button
           className="btn btn-primary rounded-xl text-2xl font-semibold flex items-center gap-2"
-          onClick={handleLogin}
+          onClick={fetchData}
           disabled={!userID || loading}
         >
           {loading && <AiOutlineLoading3Quarters className=" animate-spin" />}

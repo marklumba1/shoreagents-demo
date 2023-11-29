@@ -2,6 +2,7 @@ import Home from "./pages/Home";
 import Navbar from "./components/Navbar/Navbar";
 import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
 import Login from "./pages/Login";
+import Profile from "./pages/Profile";
 const App = () => {
   const options = [
     { menu: "Home" },
@@ -45,6 +46,7 @@ const App = () => {
         <Routes>
           <Route path="/home" element={<Home />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/profile/:id" element={<Profile />} />
           <Route path="*" element={<Navigate to="/home" replace={true} />} />
         </Routes>
       </BrowserRouter>

@@ -12,7 +12,7 @@ const useAxios = ({
 }) => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
-  const [data, setData] = useState([]);
+  const [data, setData] = useState<any>();
 
   const fetchData = async () => {
     try {

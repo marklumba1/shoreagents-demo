@@ -4,7 +4,6 @@ import Jumbotron from "../components/Jumbotron/Jumbotron";
 import useAxios from "../hooks/useAxios";
 import Loader from "../components/Loader/Loader";
 import Footer from "../components/Footer/Footer";
-import Swal from "sweetalert2";
 import { useEffect } from "react";
 
 const Home = () => {
@@ -55,12 +54,13 @@ const Home = () => {
           <p className="py-8 text-3xl">Members</p>
           {data && !loading && (
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 w-full gap-5">
-              {data.map((data: CardInterface, index) => (
+              {data.map((data: CardInterface, index: number) => (
                 <Card
                   key={index}
                   name={data.name}
                   email={data.email}
                   username={data.username}
+                  id={data.id}
                 />
               ))}
             </div>

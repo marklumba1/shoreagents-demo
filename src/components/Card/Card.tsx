@@ -1,6 +1,6 @@
 import CardInterface from "./CardInterface";
 import { AiOutlineUser } from "react-icons/ai";
-const Card: React.FC<CardInterface> = ({ username, name, email }) => {
+const Card: React.FC<CardInterface> = ({ id, username, name, email }) => {
   return (
     <div className="border rounded p-2 shadow group flex items-center gap-2 hover:animate-pulse">
       <AiOutlineUser className="text-8xl" />
@@ -10,6 +10,7 @@ const Card: React.FC<CardInterface> = ({ username, name, email }) => {
         </div>
         <p>{username}</p>
         <p>{email}</p>
+        <p>User ID: {id}</p>
       </div>
     </div>
   );
