@@ -1,5 +1,7 @@
 import Home from "./pages/Home";
 import Navbar from "./components/Navbar/Navbar";
+import { BrowserRouter, Route, Routes, Link } from "react-router-dom";
+import Login from "./pages/Login";
 const App = () => {
   const options = [
     { menu: "Home" },
@@ -37,8 +39,14 @@ const App = () => {
   ];
   return (
     <div>
-      <Navbar options={options} brand="SHOREAGENTS" />
-      <Home />
+      <BrowserRouter>
+        <Navbar options={options} brand="SHOREAGENTS" />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="*" element={<p>404 Page not found</p>} />
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 };

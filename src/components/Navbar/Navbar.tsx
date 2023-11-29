@@ -1,5 +1,6 @@
 import NavbarInterface from "./NavbarInterface";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { AiOutlineDown, AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
 const Navbar: React.FC<NavbarInterface> = ({ brand, options }) => {
   const [showOption, setShowOption] = useState(0);
@@ -9,7 +10,9 @@ const Navbar: React.FC<NavbarInterface> = ({ brand, options }) => {
     : "hidden";
   return (
     <div className="relative p-3 shadow flex justify-between items-center z-50">
-      <p className="text-lg font-bold text-lime-500">{brand}</p>
+      <Link to="/" className="text-lg font-bold text-lime-500">
+        {brand}
+      </Link>
       <div className="flex gap-4 items-center">
         <ul className={`gap-2 ${isMobileClass} lg:flex`}>
           {options.map((option, index) => {
