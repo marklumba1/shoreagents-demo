@@ -3,6 +3,7 @@ import CardInterface from "../components/Card/CardInterface";
 import Jumbotron from "../components/Jumbotron/Jumbotron";
 import useAxios from "../hooks/useAxios";
 import Loader from "../components/Loader/Loader";
+import Footer from "../components/Footer/Footer";
 const Home = () => {
   const sampleJumbotronProps = {
     images: [
@@ -43,14 +44,14 @@ const Home = () => {
         slider={sampleJumbotronProps.slider}
       />
 
-      <div className="flex justify-center">
+      <div className="flex justify-center py-32">
         <div className="container flex flex-col justify-center items-center">
+          <p className="py-8 text-3xl">Members</p>
           {data && !loading && (
-            <div className="grid grid-cols-3 border w-full">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 w-full gap-5">
               {data.map((data: CardInterface, index) => (
                 <Card
                   key={index}
-                  id={data.id}
                   name={data.name}
                   email={data.email}
                   username={data.username}
@@ -58,9 +59,11 @@ const Home = () => {
               ))}
             </div>
           )}
-          <Loader title="loading users" />
+          {loading && <Loader title="loading users" />}
         </div>
       </div>
+
+      <Footer title="This is a sample footer" />
     </div>
   );
 };
