@@ -8,7 +8,7 @@ const Navbar: React.FC<NavbarInterface> = ({ brand, options }) => {
     ? "flex flex-col bg-white absolute top-[100%] left-0 right-0 entrance-top"
     : "hidden";
   return (
-    <div className="relative p-3 shadow flex justify-between items-center">
+    <div className="relative p-3 shadow flex justify-between items-center z-50">
       <p className="text-lg font-bold text-lime-500">{brand}</p>
       <div className="flex gap-4 items-center">
         <ul className={`gap-2 ${isMobileClass} lg:flex`}>
