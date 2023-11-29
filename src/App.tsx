@@ -1,6 +1,6 @@
 import Home from "./pages/Home";
 import Navbar from "./components/Navbar/Navbar";
-import { BrowserRouter, Route, Routes, Link } from "react-router-dom";
+import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
 import Login from "./pages/Login";
 const App = () => {
   const options = [
@@ -37,14 +37,15 @@ const App = () => {
       menu: "Contact",
     },
   ];
+
   return (
     <div>
       <BrowserRouter>
         <Navbar options={options} brand="SHOREAGENTS" />
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/home" element={<Home />} />
           <Route path="/login" element={<Login />} />
-          <Route path="*" element={<p>404 Page not found</p>} />
+          <Route path="*" element={<Navigate to="/home" replace={true} />} />
         </Routes>
       </BrowserRouter>
     </div>

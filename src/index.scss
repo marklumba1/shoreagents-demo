@@ -14,6 +14,11 @@
   }
   .btn {
     @apply rounded p-3;
+    &:disabled {
+      cursor: default;
+      pointer-events: none;
+      background-color: #ccc;
+    }
   }
   .btn-primary {
     @apply bg-lime-600 text-white cursor-pointer;
@@ -29,10 +34,22 @@
       transition: 500ms;
     }
   }
-
   .fade-in {
     opacity: 0;
     animation: fade-in 300ms linear forwards;
+  }
+  input[type="text"] {
+    border: 1px solid gray;
+    padding: 10px;
+    font-size: 1.2rem;
+    border-radius: 10px;
+    &:active,
+    &:focus {
+      outline: none;
+      background: #eee;
+      transition: 300ms;
+      border: 1px solid rgb(68, 239, 79);
+    }
   }
 }
 

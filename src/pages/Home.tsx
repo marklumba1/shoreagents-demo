@@ -4,6 +4,9 @@ import Jumbotron from "../components/Jumbotron/Jumbotron";
 import useAxios from "../hooks/useAxios";
 import Loader from "../components/Loader/Loader";
 import Footer from "../components/Footer/Footer";
+import Swal from "sweetalert2";
+import { useEffect } from "react";
+
 const Home = () => {
   const sampleJumbotronProps = {
     images: [
@@ -28,10 +31,13 @@ const Home = () => {
     reviews: "End of Jumbotron Component",
   };
 
-  const { data, loading, error } = useAxios({
+  const { data, loading, fetchData } = useAxios({
     url: "https://jsonplaceholder.typicode.com/users",
     method: "GET",
   });
+  useEffect(() => {
+    fetchData();
+  }, []);
 
   return (
     <div>
@@ -44,7 +50,7 @@ const Home = () => {
         slider={sampleJumbotronProps.slider}
       />
 
-      <div className="flex justify-center py-32">
+      <div className="flex justify-center pb-32">
         <div className="container flex flex-col justify-center items-center">
           <p className="py-8 text-3xl">Members</p>
           {data && !loading && (

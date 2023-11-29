@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 const useAxios = ({
   url,
@@ -10,29 +10,28 @@ const useAxios = ({
   method: string;
   payload?: string;
 }) => {
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [data, setData] = useState([]);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.request({
-          data: payload,
-          method,
-          url,
-        });
-        setData(response.data);
-      } catch (error: any) {
-        setError(error?.message);
-      } finally {
-        setLoading(false);
-      }
-    };
-    fetchData();
-  }, []);
+  const fetchData = async () => {
+    try {
+      setLoading(true);
+      const response = await axios.request({
+        data: payload,
+        method,
+        url,
+      });
+      setData(response.data);
+      setError("");
+    } catch (error: any) {
+      setError(error?.message);
+    } finally {
+      setLoading(false);
+    }
+  };
 
-  return { loading, error, data };
+  return { loading, error, data, fetchData };
 };
 
 export default useAxios;

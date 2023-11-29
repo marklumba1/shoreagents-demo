@@ -1,15 +1,20 @@
 import NavbarInterface from "./NavbarInterface";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { AiOutlineDown, AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
 const Navbar: React.FC<NavbarInterface> = ({ brand, options }) => {
   const [showOption, setShowOption] = useState(0);
   const [showMobile, setShowMobile] = useState(false);
+  const { pathname } = useLocation();
   const isMobileClass = showMobile
     ? "flex flex-col bg-white absolute top-[100%] left-0 right-0 entrance-top"
     : "hidden";
   return (
-    <div className="relative p-3 shadow flex justify-between items-center z-50">
+    <div
+      className={`relative p-3 shadow flex justify-between items-center z-50 ${
+        pathname === "/login" && "hidden"
+      }`}
+    >
       <Link to="/" className="text-lg font-bold text-lime-500">
         {brand}
       </Link>
@@ -57,7 +62,9 @@ const Navbar: React.FC<NavbarInterface> = ({ brand, options }) => {
           />
         )}
 
-        <button className="btn btn-primary">GET STARTED</button>
+        <Link to="/login" className="btn btn-primary">
+          GET STARTED
+        </Link>
       </div>
     </div>
   );

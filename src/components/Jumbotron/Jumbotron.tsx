@@ -22,7 +22,7 @@ const Jumbotron: React.FC<JumbotronInterface> = ({
   }, [imageIndex]);
 
   return (
-    <div className="relative flex justify-center py-32">
+    <div className="relative flex justify-center pt-32">
       <img
         src={images[imageIndex]}
         className="w-full h-[700px] object-cover border-b-8 absolute top-0 z-[-10] border-lime-500 transition-all filter brightness-50"
