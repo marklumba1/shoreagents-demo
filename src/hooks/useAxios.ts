@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
 
-const useAxios = async ({
+const useAxios = ({
   url,
   method,
   payload,
@@ -12,10 +12,10 @@ const useAxios = async ({
 }) => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
-  const [data, setData] = useState(null);
+  const [data, setData] = useState([]);
 
   useEffect(() => {
-    async () => {
+    const fetchData = async () => {
       try {
         const response = await axios.request({
           data: payload,
@@ -29,6 +29,7 @@ const useAxios = async ({
         setLoading(false);
       }
     };
+    fetchData();
   }, []);
 
   return { loading, error, data };

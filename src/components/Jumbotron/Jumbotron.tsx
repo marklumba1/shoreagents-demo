@@ -13,7 +13,6 @@ const Jumbotron: React.FC<JumbotronInterface> = ({
 }) => {
   const [imageIndex, setImageIndex] = useState(0);
   const windowSize = useDetectScreen();
-  console.log(windowSize);
 
   useEffect(() => {
     setTimeout(() => {
@@ -28,7 +27,7 @@ const Jumbotron: React.FC<JumbotronInterface> = ({
         src={images[imageIndex]}
         className="w-full h-[700px] object-cover border-b-8 absolute top-0 z-[-10] border-lime-500 transition-all filter brightness-50"
       />
-      <div className="p-8 pt-32 text-center flex flex-col gap-14 container">
+      <div className="pt-32 text-center flex flex-col gap-14 container">
         <p className=" text-4xl lg:font-semibold lg:text-5xl text-white">
           {heading}
         </p>

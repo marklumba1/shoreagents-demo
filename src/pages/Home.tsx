@@ -1,6 +1,8 @@
 import Card from "../components/Card/Card";
+import CardInterface from "../components/Card/CardInterface";
 import Jumbotron from "../components/Jumbotron/Jumbotron";
 import useAxios from "../hooks/useAxios";
+import Loader from "../components/Loader/Loader";
 const Home = () => {
   const sampleJumbotronProps = {
     images: [
@@ -24,29 +26,8 @@ const Home = () => {
     ],
     reviews: "End of Jumbotron Component",
   };
-  const cardsComponentProps = [
-    {
-      image: "https://placebear.com/200/300",
-      title: "Sample Title",
-      subTitle: "This is a sample of a subtitle",
-    },
-    {
-      image: "https://placebear.com/200/300",
-      title: "Sample Title",
-      subTitle: "This is a sample of a subtitle",
-    },
-    {
-      image: "https://placebear.com/200/300",
-      title: "Sample Title",
-      subTitle: "This is a sample of a subtitle",
-    },
-    {
-      image: "https://placebear.com/200/300",
-      title: "Sample Title",
-      subTitle: "This is a sample of a subtitle",
-    },
-  ];
-  const requestUsers = useAxios({
+
+  const { data, loading, error } = useAxios({
     url: "https://jsonplaceholder.typicode.com/users",
     method: "GET",
   });
@@ -62,10 +43,23 @@ const Home = () => {
         slider={sampleJumbotronProps.slider}
       />
 
-      <div className="flex justify-center gap-10 ">
-        {cardsComponentProps.map(({ image, title, subTitle }, index) => (
-          <Card key={index} image={image} title={title} subTitle={subTitle} />
-        ))}
+      <div className="flex justify-center">
+        <div className="container flex flex-col justify-center items-center">
+          {data && !loading && (
+            <div className="grid grid-cols-3 border w-full">
+              {data.map((data: CardInterface, index) => (
+                <Card
+                  key={index}
+                  id={data.id}
+                  name={data.name}
+                  email={data.email}
+                  username={data.username}
+                />
+              ))}
+            </div>
+          )}
+          <Loader title="loading users" />
+        </div>
       </div>
     </div>
   );

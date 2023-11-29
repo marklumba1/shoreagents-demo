@@ -8,10 +8,14 @@
 }
 
 @layer components {
+  .container {
+    max-width: 1200px;
+    border: 1px solid red;
+    padding: 10px;
+  }
   .btn {
     @apply rounded p-3;
   }
-
   .btn-primary {
     @apply bg-lime-600 text-white cursor-pointer;
     &:hover {

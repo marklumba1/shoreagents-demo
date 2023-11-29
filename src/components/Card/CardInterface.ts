@@ -1,5 +1,6 @@
 export default interface CardInterface {
-  image: string;
-  title: string;
-  subTitle: string;
+  id: number;
+  name: string;
+  username: string;
+  email: string;
 }
