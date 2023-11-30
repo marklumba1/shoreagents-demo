@@ -2,18 +2,20 @@ import { Link, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import useAxios from "../hooks/useAxios";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
-
+import { useDispatch } from "react-redux";
+import { setUser } from "../features/user/userSlice";
 const Login = () => {
+  const navigate = useNavigate();
   const [userID, setUserID] = useState("");
+  const dispatch = useDispatch();
   const { loading, error, data, fetchData } = useAxios({
     url: `https://jsonplaceholder.typicode.com/users/${userID}`,
     method: "GET",
   });
 
-  const navigate = useNavigate();
-
   useEffect(() => {
     if (data?.id) {
+      dispatch(setUser(data));
       navigate(`/profile/${data?.id}`);
     }
   }, [data]);
