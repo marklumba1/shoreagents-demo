@@ -1,12 +1,14 @@
 import { useSelector } from "react-redux";
-import UserInterface from "../features/user/userInterface";
+import { RootState } from "../store";
+import UserCard from "../components/UserCard/UserCard";
 
 const Profile = () => {
-  const { user } = useSelector((state: { user: UserInterface }) => state);
-  console.log(user);
+  const { user } = useSelector((state: RootState) => state.user);
   return (
     <div className="flex justify-center">
-      <div className="container border">asdfsdfsdf</div>
+      <div className="container border">
+        <UserCard user={user} />
+      </div>
     </div>
   );
 };
