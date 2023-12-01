@@ -53,7 +53,7 @@ const Home = () => {
         <div className="container flex flex-col justify-center items-center">
           <p className="py-8 text-3xl">Members</p>
           {data && !loading && (
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 w-full gap-5">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 w-full gap-5">
               {data.map((data: CardInterface, index: number) => (
                 <Card
                   key={index}
